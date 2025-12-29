@@ -1,0 +1,49 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: service-a-route
+          uri: lb://SERVICE-A
+          predicates:
+            - Path=/service-a/**
+          filters:
+            - RewritePath=/service-a/(?<segment>.*), /$\{segment}
+            - AddRequestHeader=X-Gateway-Source, gateway-service
+
+        - id: service-b-route
+          uri: lb://SERVICE-B
+          predicates:
+            - Path=/service-b/**
+          filters:
+            - RewritePath=/service-b/(?<segment>.*), /$\{segment}
+            - AddResponseHeader=X-Served-By, gateway
+
+        - id: firstms-route
+          uri: lb://FIRSTMS
+          predicates:
+            - Path=/firstms/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Gateway-Source, gateway-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

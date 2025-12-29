@@ -1,0 +1,36 @@
+services:
+  eureka-server:
+    build: ./eurika_server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - devops-net
+
+  gateway-service:
+    build: ./gateway-service
+    container_name: gateway-service
+    ports:
+      - "8080:8080"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    networks:
+      - devops-net
+
+  firstms:
+    build: ./firstms
+    container_name: firstms
+    ports:
+      - "8081:8081"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    depends_on:
+      - eureka-server
+    networks:
+      - devops-net
+
+networks:
+  devops-net:
+    driver: bridge
