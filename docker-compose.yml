@@ -92,3 +92,4 @@ services:
 networks:
   devops-net:
     driver: bridge
+    
