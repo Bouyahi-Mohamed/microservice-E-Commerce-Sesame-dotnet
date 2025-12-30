@@ -1,0 +1,184 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\ds dotnet\\backend\\project-backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{351C8692-7889-4871-A6AE-701B4D8A87EB}|project-context\\project-context.csproj|d:\\ds dotnet\\backend\\project-backend\\project-context\\project-context.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{351C8692-7889-4871-A6AE-701B4D8A87EB}|project-context\\project-context.csproj|solutionrelative:project-context\\project-context.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|d:\\ds dotnet\\backend\\project-backend\\projet-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|solutionrelative:projet-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|d:\\ds dotnet\\backend\\project-backend\\projet-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|solutionrelative:projet-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|d:\\ds dotnet\\backend\\project-backend\\project-entities\\project-entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|solutionrelative:project-entities\\project-entities.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|d:\\ds dotnet\\backend\\project-backend\\projet-api\\projet-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|solutionrelative:projet-api\\projet-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{351C8692-7889-4871-A6AE-701B4D8A87EB}|project-context\\project-context.csproj|d:\\ds dotnet\\backend\\project-backend\\project-context\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{351C8692-7889-4871-A6AE-701B4D8A87EB}|project-context\\project-context.csproj|solutionrelative:project-context\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|d:\\ds dotnet\\backend\\project-backend\\project-entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|solutionrelative:project-entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|d:\\ds dotnet\\backend\\project-backend\\project-entities\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{040610C8-1749-48BC-93CA-E23F7515A0CF}|project-entities\\project-entities.csproj|solutionrelative:project-entities\\roles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|d:\\ds dotnet\\backend\\project-backend\\projet-api\\migrations\\20251203093216_vv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{866F9078-4461-4C92-A41C-703ED9F35E35}|projet-API\\projet-API.csproj|solutionrelative:projet-api\\migrations\\20251203093216_vv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20251203093216_vv.cs",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\Migrations\\20251203093216_vv.cs",
+              "RelativeDocumentMoniker": "projet-API\\Migrations\\20251203093216_vv.cs",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\Migrations\\20251203093216_vv.cs",
+              "RelativeToolTip": "projet-API\\Migrations\\20251203093216_vv.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T09:32:16.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "projet-API.csproj",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\projet-API.csproj",
+              "RelativeDocumentMoniker": "projet-API\\projet-API.csproj",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\projet-API.csproj",
+              "RelativeToolTip": "projet-API\\projet-API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-03T09:24:15.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\Program.cs",
+              "RelativeDocumentMoniker": "projet-API\\Program.cs",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\Program.cs",
+              "RelativeToolTip": "projet-API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T09:23:57.412Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DataContext.cs",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\project-context\\DataContext.cs",
+              "RelativeDocumentMoniker": "project-context\\DataContext.cs",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\project-context\\DataContext.cs",
+              "RelativeToolTip": "project-context\\DataContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T09:10:11.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\appsettings.json",
+              "RelativeDocumentMoniker": "projet-API\\appsettings.json",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\projet-API\\appsettings.json",
+              "RelativeToolTip": "projet-API\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-03T09:07:50.179Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "project-context.csproj",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\project-context\\project-context.csproj",
+              "RelativeDocumentMoniker": "project-context\\project-context.csproj",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\project-context\\project-context.csproj",
+              "RelativeToolTip": "project-context\\project-context.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-03T08:31:16.037Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "project-entities.csproj",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\project-entities.csproj",
+              "RelativeDocumentMoniker": "project-entities\\project-entities.csproj",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\project-entities.csproj",
+              "RelativeToolTip": "project-entities\\project-entities.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-12-03T08:28:40.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Roles.cs",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\Roles.cs",
+              "RelativeDocumentMoniker": "project-entities\\Roles.cs",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\Roles.cs",
+              "RelativeToolTip": "project-entities\\Roles.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAQwAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T08:31:12.224Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\User.cs",
+              "RelativeDocumentMoniker": "project-entities\\User.cs",
+              "ToolTip": "D:\\ds dotnet\\backend\\project-backend\\project-entities\\User.cs",
+              "RelativeToolTip": "project-entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T08:30:44.651Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

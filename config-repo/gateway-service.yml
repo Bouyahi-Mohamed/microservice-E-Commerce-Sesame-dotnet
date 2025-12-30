@@ -25,13 +25,35 @@ spring:
             - RewritePath=/service-b/(?<segment>.*), /$\{segment}
             - AddResponseHeader=X-Served-By, gateway
 
-        - id: firstms-route
-          uri: lb://FIRSTMS
+        - id: identity-service
+          uri: lb://IDENTITY-SERVICE
           predicates:
-            - Path=/firstms/**
+            - Path=/identity/**
           filters:
             - StripPrefix=1
-            - AddRequestHeader=X-Gateway-Source, gateway-service
+
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog/**
+          filters:
+            - StripPrefix=1
+
+        - id: cart-service
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/cart/**
+          filters:
+            - StripPrefix=1
+
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+
+
 
 eureka:
   client:

@@ -7,6 +7,21 @@ services:
     networks:
       - devops-net
 
+  config-server:
+    build: ./configServer
+    container_name: config-server
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./config-repo:/config-repo
+    networks:
+      - devops-net
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9999/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   gateway-service:
     build: ./gateway-service
     container_name: gateway-service
@@ -15,19 +30,62 @@ services:
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
     depends_on:
-      - eureka-server
+      eureka-server:
+        condition: service_started
+      config-server:
+        condition: service_healthy
     networks:
       - devops-net
 
-  firstms:
-    build: ./firstms
-    container_name: firstms
+  identity-service:
+    build: ./backend/identity-service
+    container_name: identity-service
     ports:
-      - "8081:8081"
-    environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+      - "5001:8080"
     depends_on:
-      - eureka-server
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    networks:
+      - devops-net
+
+  catalog-service:
+    build: ./backend/catalog-service
+    container_name: catalog-service
+    ports:
+      - "5002:8080"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    networks:
+      - devops-net
+
+  cart-service:
+    build: ./backend/cart-service
+    container_name: cart-service
+    ports:
+      - "5003:8080"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+    networks:
+      - devops-net
+
+  order-service:
+    build: ./backend/order-service
+    container_name: order-service
+    ports:
+      - "5004:8080"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
     networks:
       - devops-net
 

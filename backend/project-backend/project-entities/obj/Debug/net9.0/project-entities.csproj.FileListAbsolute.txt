@@ -1,0 +1,12 @@
+D:\ds dotnet\backend\project-backend\project-entities\bin\Debug\net9.0\project-entities.deps.json
+D:\ds dotnet\backend\project-backend\project-entities\bin\Debug\net9.0\project-entities.dll
+D:\ds dotnet\backend\project-backend\project-entities\bin\Debug\net9.0\project-entities.pdb
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.AssemblyInfoInputs.cache
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.AssemblyInfo.cs
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.csproj.CoreCompileInputs.cache
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.sourcelink.json
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.dll
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\refint\project-entities.dll
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\project-entities.pdb
+D:\ds dotnet\backend\project-backend\project-entities\obj\Debug\net9.0\ref\project-entities.dll
