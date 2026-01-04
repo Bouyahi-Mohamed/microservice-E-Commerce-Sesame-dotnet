@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { API_URLS } from "../../../apiConfig";
 import './productList.css';
 import { Link } from 'react-router-dom';
 export default function ProductList({ products = [] }) {
 // handle add to cart
 const handleAddToCart = async (productId) => {
   try {
-    await axios.post('http://localhost:5038/cart/', { product: productId, quantity: 1 });
+    await axios.post(API_URLS.CART, { product: productId, quantity: 1 });
     alert('Product added to cart');
   } catch (error) {
     console.error('Error adding product to cart:', error);
@@ -27,7 +28,7 @@ const handleAddToCart = async (productId) => {
 
           <div className="product-rating-container">
             <img className="product-rating-stars"
-              src={`../images/ratings/rating-${product.rating.stars * 10}.png`} alt={`${product.rating.stars} stars`} />
+              src={`../images/ratings/rating-${Math.round(product.rating.stars * 2) * 5}.png`} alt={`${product.rating.stars} stars`} />
             <div className="product-rating-count link-primary">
               {product.rating.count} 
             </div>

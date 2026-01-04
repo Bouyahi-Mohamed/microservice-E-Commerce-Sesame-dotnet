@@ -1,5 +1,8 @@
 using Steeltoe.Discovery.Eureka;
 using Steeltoe.Configuration.ConfigServer;
+using Microsoft.EntityFrameworkCore;
+using cart_service.Data;
+using cart_service.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +11,11 @@ builder.AddConfigServer();
 
 // Add services to the container.
 builder.Services.AddEurekaDiscoveryClient();
+
+builder.Services.AddControllers();
+
+builder.Services.AddDbContext<CartContext>(options =>
+    options.UseInMemoryDatabase("CartDb"));
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
@@ -20,28 +28,56 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.MapControllers();
 
-app.MapGet("/weatherforecast", () =>
+// Seed Data
+using (var scope = app.Services.CreateScope())
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    var context = scope.ServiceProvider.GetRequiredService<CartContext>();
+    context.Database.EnsureCreated();
+    
+    if (!context.Products.Any())
+    {
+        var category = new Category { Name = "Clothing" }; // Minimal replica
+        context.Categories.Add(category);
+        
+        context.Products.AddRange(
+            new Product 
+            { 
+                Name = "T-Shirt", 
+                Description = "Cool T-Shirt", 
+                Price = 19.99m, 
+                Category = category,
+                RatingStars = 4.5,
+                RatingCount = 10,
+                Keywords = "shirt,clothing",
+                Image = "images/products/tshirt.png"
+            },
+            new Product 
+            { 
+                Name = "Jeans", 
+                Description = "Blue Jeans", 
+                Price = 49.99m, 
+                Category = category,
+                RatingStars = 4.8,
+                RatingCount = 5,
+                Keywords = "jeans,clothing",
+                Image = "images/products/jeans.png"
+            }
+        );
+        
+        if (!context.DeliveryOptions.Any())
+        {
+            context.DeliveryOptions.Add(new DeliveryOption 
+            { 
+                Name = "Standard Delivery", 
+                PriceCents = 499, 
+                EstimatedDays = 3 
+            });
+        }
+        
+        context.SaveChanges();
+    }
+}
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

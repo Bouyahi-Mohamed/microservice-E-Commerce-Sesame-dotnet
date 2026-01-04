@@ -8,6 +8,18 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
       routes:
         - id: service-a-route
           uri: lb://SERVICE-A

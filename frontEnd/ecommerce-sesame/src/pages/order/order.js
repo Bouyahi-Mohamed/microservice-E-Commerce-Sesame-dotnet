@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header1 from "../../components/header1/header1.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URLS } from "../../apiConfig";
 import { format } from 'date-fns';
 
 function Order({ carts }) {
@@ -18,7 +19,7 @@ function Order({ carts }) {
             return;
         }
 
-        const response = await axios.get('http://localhost:5038/orders'); 
+        const response = await axios.get(API_URLS.ORDERS); 
         // Interceptor in App.js adds Authorization header if token exists using axios
         // But to be safe/explicit or if this component runs in isolation:
         // verify App.js interceptor is global. Yes it is.

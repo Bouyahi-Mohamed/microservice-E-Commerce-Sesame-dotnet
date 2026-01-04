@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "../../components/header1/header1";
 import axios from "axios";
+import { API_URLS } from "../../apiConfig";
 
 export default function ProductDetails({ carts }) {
   // state for product details
@@ -16,17 +17,20 @@ export default function ProductDetails({ carts }) {
   // function to handle add to cart
   const handleAddToCart = async (product, quantity) => {
     try {
-      await axios.post('http://localhost:5038/cart/', { product: product._id, quantity });
+      await axios.post(API_URLS.CART, { product: product._id, quantity });
+      // update cart state
+      // Assuming fetchCart is passed as a prop or available in context if needed
+      // fetchCart(); 
       alert('Product added to cart');
     } catch (error) {
-      console.error('Error adding product to cart:', error);
+      console.log(error);
     }
   };
   //  fetch for product details
 
   useEffect(() => {
     //fetch data
-    fetch(`http://localhost:5038/products/${id}`)
+    fetch(`${API_URLS.PRODUCTS}/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -60,7 +64,7 @@ export default function ProductDetails({ carts }) {
           </div>
           <div className="product-details">
             <img
-              src={`/images/ratings/rating-${productDetails.rating.stars * 10}.png`}
+              src={`/images/ratings/rating-${Math.round(productDetails.rating.stars * 2) * 5}.png`}
               alt={`${productDetails.rating.stars} stars`}
             />
             <h1>{productDetails.name}</h1>

@@ -6,8 +6,8 @@ import { format, addDays } from 'date-fns';
 import arrowUp from "../../../assets/icons/arrow-up.png";
 import arrowDown from "../../../assets/icons/arrow-down.png";
 //end import images
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { API_URLS } from "../../../apiConfig";
 import DeliveryOptions from "./DeliveryOptions";
 export default function CartList({ carts }) {
   // Get token dynamically to ensure it's current
@@ -16,21 +16,22 @@ export default function CartList({ carts }) {
   // fetch delivery options from backend
   const [deliveryOptions, setDeliveryOptions] = useState([]);
 
-  const fetchDeliveryOptions = async () => {
-    try {
-      const options = await axios.get("http://localhost:5038/deliverOptions", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setDeliveryOptions(options.data);
-    } catch (error) {
-      console.error("Error fetching delivery options:", error);
-    }
-  };
   useEffect(() => {
+    const fetchDeliveryOptions = async () => {
+      try {
+        const options = await axios.get(API_URLS.DELIVERY_OPTIONS, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setDeliveryOptions(options.data);
+      } catch (error) {
+        console.error("Error fetching delivery options:", error);
+      }
+    };
     fetchDeliveryOptions();
-  }, [deliveryOptions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // calculate totals
   const totalCart = () => {
@@ -224,7 +225,7 @@ export default function CartList({ carts }) {
                       return;
                   }
                   
-                  await axios.post('http://localhost:5038/orders', {}, {
+                  await axios.post(API_URLS.ORDERS, {}, {
                       headers: {
                           'Authorization': `Bearer ${currentToken}`
                       }

@@ -1,10 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "skfIjNHEBq8=",
+  "dgSpecHash": "yMkILvTiKOE=",
   "success": true,
   "projectFilePath": "D:\\code\\github project\\microservice\\tp\\backend\\cart-service\\cart-service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bouya\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.9\\microsoft.aspnetcore.openapi.9.0.9.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.0\\microsoft.entityframeworkcore.9.0.0.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0\\microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0\\microsoft.entityframeworkcore.analyzers.9.0.0.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.0\\microsoft.entityframeworkcore.inmemory.9.0.0.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.0\\microsoft.extensions.caching.abstractions.9.0.0.nupkg.sha512",
+    "C:\\Users\\bouya\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.0\\microsoft.extensions.caching.memory.9.0.0.nupkg.sha512",
     "C:\\Users\\bouya\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.8\\microsoft.extensions.configuration.9.0.8.nupkg.sha512",
     "C:\\Users\\bouya\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.8\\microsoft.extensions.configuration.abstractions.9.0.8.nupkg.sha512",
     "C:\\Users\\bouya\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.8\\microsoft.extensions.configuration.binder.9.0.8.nupkg.sha512",

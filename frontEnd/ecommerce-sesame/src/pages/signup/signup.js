@@ -1,5 +1,6 @@
 
 import './singup.css';
+import { API_URLS } from "../../apiConfig";
 import { Link, useNavigate } from 'react-router-dom';
 import Header1 from '../../components/header1/header1';
 import { useState } from 'react';
@@ -11,13 +12,15 @@ function Signup({ carts }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    const { username, email, password } = signup; // Destructure for the request body
+
     try {
-      const response = await fetch('http://localhost:5038/users/signup', {
+      const response = await fetch(API_URLS.SIGNUP, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(signup),
+        body: JSON.stringify({ username, email, password }),
       });
 
       if (!response.ok) {

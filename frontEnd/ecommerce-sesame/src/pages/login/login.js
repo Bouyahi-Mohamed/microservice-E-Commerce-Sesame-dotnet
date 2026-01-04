@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Header1 from '../../components/header1/header1';
 import {useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_URLS } from "../../apiConfig";
 
 
 function Login({ carts }) {
@@ -11,15 +12,16 @@ function Login({ carts }) {
   const navigate = useNavigate();
   // function to handle form submission
   const fetchLogin = async (e) => {
-    handleSubmit(e);
+    e.preventDefault(); // Prevent default form submission
+    const { username, password } = login; // Destructure username and password from the state
     const guestCartId = localStorage.getItem('guestCartId');
-    fetch('http://localhost:5038/users/login', {
+    fetch(API_URLS.LOGIN, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Cart-ID': guestCartId || '' // Send guest cart ID for merging
       },
-      body: JSON.stringify(login),
+      body: JSON.stringify({ username, password }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -41,13 +43,7 @@ function Login({ carts }) {
 
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLogin({
-      username: e.target.username.value,
-      password: e.target.password.value,
-    });
-  }
+
 
   return (
       <>

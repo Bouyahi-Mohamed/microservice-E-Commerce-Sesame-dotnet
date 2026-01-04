@@ -1,6 +1,7 @@
 
 import styles from "./cart-main.module.css";
 import axios from "axios";
+import { API_URLS } from "../../../apiConfig";
 
 export default function DeliveryOptions({ deliveryOptions, cart }) {
   return (
@@ -9,7 +10,7 @@ export default function DeliveryOptions({ deliveryOptions, cart }) {
         <div className={styles["delivery-option"]} key={option._id}
         onClick={async () => {
           try {
-            await axios.patch(`http://localhost:5038/cart/delivery`, {
+            await axios.patch(`${API_URLS.CART}/delivery`, {
               id: cart._id,
               deliveryOption: option._id,
             });

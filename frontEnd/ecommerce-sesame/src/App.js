@@ -1,7 +1,8 @@
 // start import css is like a general css 
 import './App.css';
 // end css import 
-import axios from 'axios';// axios for fetching 
+import axios from 'axios';// axios for fetching
+import { API_URLS } from "./apiConfig"; 
 import {useState ,useEffect} from 'react'; // usehooks 
 import {Routes, Route} from 'react-router-dom'; //hooks for do routing in react 
 //start import pages
@@ -18,7 +19,7 @@ import OrderItemDetail from './pages/OrderItemDetail/OrderItemDetail';
 // function to generate UUID
 function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random() * 16 | 0, v = c === 'x' ? r : (r & 0x3 | 0x8);
+        var r = Math.random() * 16 | 0, v = c === 'x' ? r : ((r & 0x3) | 0x8);
         return v.toString(16);
     });
 }
@@ -57,32 +58,35 @@ function App() {
   // start fetch products from backend
 
  const [products, setProducts] = useState([]);
+ const [filteredProducts, setFilteredProducts] = useState([]);
   const fetchProducts = async () => {
     try {
-      const products = await axios.get('http://localhost:5038/products/');
+      const products = await axios.get(API_URLS.PRODUCTS);
       setProducts(products.data);
+      setFilteredProducts(products.data);
     } catch (error) {
-      console.error("Error fetching products:", error);
+           console.log(error);
     }
-  };
+  }
     useEffect(() => {
        fetchProducts();
     }, [products]);
   
   // end fetch product 
 
-  //fetch cart from backend
+  //fetching cart
     const [carts, setCarts] = useState([]);
-  const fetchCarts = async () => {
-            try {
-              const carts = await axios.get('http://localhost:5038/cart/');
-              setCarts(carts.data);
-            } catch (error) {
-              console.error("Error fetching carts:", error);
-            }
-        };                        
+  const fetchCart = async () => {
+    try {
+      // If no token and no guest headers handled by interceptor, might fail, but let's assume interceptor works
+        const carts = await axios.get(API_URLS.CART);
+        setCarts(carts.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
     useEffect(() => {
-        fetchCarts();
+        fetchCart(); // Changed to fetchCart
     }, [carts]);
 
     // ---end fetch products from backend---
@@ -92,8 +96,8 @@ function App() {
     <div className="App">
   
       <Routes>
-        <Route path='/' element={<Home products={products} carts={carts} />}/>
-        <Route path='/home' element={<Home products={products} carts={carts} />}/>
+        <Route path='/' element={<Home products={filteredProducts} carts={carts} />}/>
+        <Route path='/home' element={<Home products={filteredProducts} carts={carts} />}/>
 
         <Route path='/product/:id' element={<ProductDetails carts={carts} />}/>
         <Route path='/orders' element={<Order carts={carts} />}/>

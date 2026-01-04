@@ -57,3 +57,14 @@ D:\code\github project\microservice\tp\backend\identity-service\obj\Debug\net9.0
 D:\code\github project\microservice\tp\backend\identity-service\obj\Debug\net9.0\identity-service.pdb
 D:\code\github project\microservice\tp\backend\identity-service\obj\Debug\net9.0\identity-service.genruntimeconfig.cache
 D:\code\github project\microservice\tp\backend\identity-service\obj\Debug\net9.0\ref\identity-service.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.EntityFrameworkCore.InMemory.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+D:\code\github project\microservice\tp\backend\identity-service\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
