@@ -66,7 +66,7 @@ export default function CartList({ carts }) {
 
   // handle increase quantity
   const handleIncreaseQuantity = (cart) => {
-    axios.patch(`http://localhost:5038/cart/`, {
+    axios.patch(API_URLS.CART, {
       id: cart._id,
       quantity: cart.quantity + 1,
       headers: {
@@ -77,7 +77,7 @@ export default function CartList({ carts }) {
   // handle decrease quantity
   const handleDecreaseQuantity = (cart) => {
     if (cart.quantity > 1) {
-      axios.patch(`http://localhost:5038/cart/`, {
+      axios.patch(API_URLS.CART, {
         id: cart._id,
         quantity: cart.quantity - 1,
         headers: {
@@ -85,7 +85,7 @@ export default function CartList({ carts }) {
         },
       });
     } else {
-      axios.delete(`http://localhost:5038/cart/`, {
+      axios.delete(API_URLS.CART, {
         data: { id: cart._id },
         headers: {
           Authorization: `Bearer ${token}`,
@@ -96,7 +96,7 @@ export default function CartList({ carts }) {
 
   // handle delete item
   const handleDeleteItem = (cart) => {
-    axios.delete(`http://localhost:5038/cart/`, {
+    axios.delete(API_URLS.CART, {
       data: { id: cart._id },
       headers: {
         Authorization: `Bearer ${token}`,

@@ -57,9 +57,24 @@ public class CartService : ICartService
 
     public async Task ClearCartAsync(string userId, string? token = null)
     {
-        // To be implemented: CartService needs a Clear endpoint or we delete items one by one?
-        // Current CartController allows DeleteCartItem but not ClearAll.
-        // We'll skip clearing for now or loop delete.
-        _logger.LogInformation("ClearCartAsync called - Logic to clear cart pending CartService update");
+        try
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = 
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            }
+
+            var response = await _httpClient.DeleteAsync("/cart/clear"); // Matching the new endpoint
+            
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning($"Failed to clear cart: {response.StatusCode}");
+            }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error clearing cart");
+        }
     }
 }

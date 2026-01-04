@@ -71,7 +71,7 @@ public class CartController : ControllerBase
 
         // Get default delivery option (Standard)
         var defaultDelivery = await _context.DeliveryOptions
-            .FirstOrDefaultAsync(d => d.Name == "Standard Shipping");
+            .FirstOrDefaultAsync(d => d.Name == "Standard Delivery");
 
         // Check if item already in cart
         var existingItem = await _context.CartItems
@@ -163,6 +163,21 @@ public class CartController : ControllerBase
         return Ok(new { message = "Item removed from cart" });
     }
 
+    [HttpDelete("clear")]
+    public async Task<ActionResult> ClearCart()
+    {
+        var cartId = GetCartId();
+        var items = await _context.CartItems.Where(i => i.CartId == cartId).ToListAsync();
+        
+        if (items.Any())
+        {
+            _context.CartItems.RemoveRange(items);
+            await _context.SaveChangesAsync();
+        }
+        
+        return Ok(new { message = "Cart cleared" });
+    }
+
     [HttpPatch("delivery")]
     public async Task<ActionResult<CartItemResponseDto>> UpdateDeliveryOption([FromBody] UpdateDeliveryDto request)
     {
@@ -197,6 +212,24 @@ public class CartController : ControllerBase
         await _context.Entry(cartItem).Reference(oi => oi.DeliveryOption).LoadAsync();
 
         return Ok(MapToCartItemDto(cartItem));
+    }
+
+    [HttpGet("delivery-options")]
+    public async Task<ActionResult<IEnumerable<DeliveryOptionDto>>> GetDeliveryOptions()
+    {
+        var options = await _context.DeliveryOptions.ToListAsync();
+        
+        var dtos = options.Select(o => new DeliveryOptionDto
+        {
+            _id = o.Id.ToString(),
+            name = o.Name,
+            priceCents = o.PriceCents,
+            estimatedDays = o.EstimatedDays,
+            createdAt = o.CreatedAt,
+            updatedAt = o.UpdatedAt
+        }).ToList(); // List<DeliveryOptionDto> matches frontend expectation
+
+        return Ok(dtos);
     }
 
     private CartItemResponseDto MapToCartItemDto(CartItem item)

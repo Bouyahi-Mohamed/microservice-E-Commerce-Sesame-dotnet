@@ -125,12 +125,26 @@ using (var scope = app.Services.CreateScope())
 
         if (!context.DeliveryOptions.Any())
         {
-            context.DeliveryOptions.Add(new DeliveryOption 
-            { 
-                Name = "Standard Shipping", 
-                PriceCents = 499, 
-                EstimatedDays = 3 
-            });
+            context.DeliveryOptions.AddRange(
+                new DeliveryOption
+                {
+                    Name = "Standard Delivery", // User's name
+                    PriceCents = 599,
+                    EstimatedDays = 6
+                },
+                new DeliveryOption
+                {
+                    Name = "Express Delivery",
+                    PriceCents = 1299,
+                    EstimatedDays = 3
+                },
+                new DeliveryOption
+                {
+                    Name = "Free Delivery",
+                    PriceCents = 0,
+                    EstimatedDays = 10
+                }
+            );
         }
         
         context.SaveChanges();

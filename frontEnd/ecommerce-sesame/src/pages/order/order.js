@@ -19,10 +19,11 @@ function Order({ carts }) {
             return;
         }
 
-        const response = await axios.get(API_URLS.ORDERS); 
-        // Interceptor in App.js adds Authorization header if token exists using axios
-        // But to be safe/explicit or if this component runs in isolation:
-        // verify App.js interceptor is global. Yes it is.
+        const response = await axios.get(API_URLS.ORDERS, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }); 
         setOrders(response.data);
       } catch (error) {
         console.error("Error fetching orders:", error);

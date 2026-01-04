@@ -132,7 +132,8 @@ public class OrdersController : ControllerBase
         var tax = subtotal * 0.1m;
         var totalAmount = subtotal + tax;
 
-        // Note: Should call _cartService.ClearCartAsync() here.
+        // Clear the cart
+        await _cartService.ClearCartAsync(userId, token);
 
         return Ok(new OrderResponseDto
         {
