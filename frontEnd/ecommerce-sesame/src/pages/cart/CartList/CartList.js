@@ -37,7 +37,9 @@ export default function CartList({ carts }) {
   const totalCart = () => {
     let total = 0;
     carts.forEach((item) => {
-      total += item.product.priceCents * item.quantity / 100;
+      if (item.product && item.product.priceCents) {
+        total += item.product.priceCents * item.quantity / 100;
+      }
     });
     return total.toFixed(2);
   };
@@ -46,7 +48,9 @@ export default function CartList({ carts }) {
   let  totalShipping = () => {
     let shippingCost = 0;
     carts.forEach((item) => {
-      shippingCost += item.deliveryOption.priceCents / 100;
+      if (item.deliveryOption && item.deliveryOption.priceCents) {
+          shippingCost += item.deliveryOption.priceCents / 100;
+      }
     });
     return shippingCost.toFixed(2);
   };
@@ -105,7 +109,7 @@ export default function CartList({ carts }) {
     <div className={styles["cart-item-container"]} key={cart._id}>
       <div className={styles["delivery-date"]}>
         Delivery date:{" "}
-        {format(addDays(new Date(), cart.deliveryOption.estimatedDays), 'MMMM dd, yyyy')}
+        {cart.deliveryOption ? format(addDays(new Date(), cart.deliveryOption.estimatedDays), 'MMMM dd, yyyy') : "TBD"}
       </div>
       <div className={styles["cart-item-details-grid"]}>
         <img

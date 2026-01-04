@@ -71,7 +71,7 @@ public class CartController : ControllerBase
 
         // Get default delivery option (Standard)
         var defaultDelivery = await _context.DeliveryOptions
-            .FirstOrDefaultAsync(d => d.Name == "Standard Delivery");
+            .FirstOrDefaultAsync(d => d.Name == "Standard Shipping");
 
         // Check if item already in cart
         var existingItem = await _context.CartItems
