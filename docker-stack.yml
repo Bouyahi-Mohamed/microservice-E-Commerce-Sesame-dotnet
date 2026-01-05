@@ -1,0 +1,187 @@
+version: "3.8"
+
+services:
+  # ==================== Infrastructure Services ====================
+  eureka-server:
+    image: tp-eureka-server
+    build: ./eurika_server
+    ports:
+      - "8761:8761"
+    networks:
+      - microservices-overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+
+  config-server:
+    image: tp-config-server
+    build: ./configServer
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./config-repo:/config-repo
+    networks:
+      - microservices-overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9999/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== API Gateway (Externally Exposed) ====================
+  gateway-service:
+    image: tp-gateway-service
+    build: ./gateway-service
+    ports:
+      - target: 8080
+        published: 8080
+        protocol: tcp
+        mode: host  # Each node exposes on port 8080
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    networks:
+      - microservices-overlay
+    deploy:
+      replicas: 2  # Load balanced across 2 instances
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: rollback
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+    depends_on:
+      - eureka-server
+      - config-server
+
+  # ==================== Backend Microservices (Internal Only) ====================
+  identity-service:
+    image: tp-identity-service
+    build: ./backend/identity-service
+    # No external port mapping - access via gateway only
+    networks:
+      - microservices-overlay
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - config-server
+      - eureka-server
+
+  catalog-service:
+    image: tp-catalog-service
+    build: ./backend/catalog-service
+    networks:
+      - microservices-overlay
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    deploy:
+      replicas: 3  # More replicas for read-heavy service
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - config-server
+      - eureka-server
+
+  cart-service:
+    image: tp-cart-service
+    build: ./backend/cart-service
+    networks:
+      - microservices-overlay
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - config-server
+      - eureka-server
+
+  order-service:
+    image: tp-order-service
+    build: ./backend/order-service
+    networks:
+      - microservices-overlay
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - config-server
+      - eureka-server
+
+  # ==================== Visualization Service ====================
+  visualizer:
+    image: dockersamples/visualizer:latest
+    ports:
+      - "9090:8080"  # Avoid conflict with gateway
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - microservices-overlay
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager  # Only on manager node for security
+      restart_policy:
+        condition: on-failure
+
+  # ==================== Frontend (Optional - if dockerized) ====================
+  # Uncomment after creating frontend Dockerfile
+  # frontend:
+  #   image: tp-frontend
+  #   build: ./frontEnd/ecommerce-sesame
+  #   ports:
+  #     - "3000:80"
+  #   networks:
+  #     - microservices-overlay
+  #   deploy:
+  #     replicas: 2
+  #     update_config:
+  #       parallelism: 1
+  #       delay: 10s
+  #     restart_policy:
+  #       condition: on-failure
+  #   depends_on:
+  #     - gateway-service
+
+# ==================== Overlay Network ====================
+networks:
+  microservices-overlay:
+    driver: overlay
+    attachable: true  # Allows standalone containers to attach
